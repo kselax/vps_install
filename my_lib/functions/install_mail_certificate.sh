@@ -33,8 +33,8 @@ return back to menu"
 
 	#install get certificates from /etc/apache2/sites-available
 
-	local ssl_file=$(sudo sed -rn "s/^SSLCertificateFile\s+(\S+)\s*$/\1/p" $vhost_path)
-	local ssl_key_file=$(sudo sed -rn "s/^SSLCertificateKeyFile\s+(\S+)\s*$/\1/p" $vhost_path)
+	local ssl_file=$(sudo sed -rn "s/^\s*SSLCertificateFile\s+(\S+)\s*$/\1/p" $vhost_path)
+	local ssl_key_file=$(sudo sed -rn "s/^\s*SSLCertificateKeyFile\s+(\S+)\s*$/\1/p" $vhost_path)
 	
 	echo "ssl_file=$ssl_file"
 	echo "ssl_key_file=$ssl_key_file"
