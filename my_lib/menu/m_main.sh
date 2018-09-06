@@ -21,7 +21,8 @@ m_main(){
 	local option[13]="install let's encrypt"
 	local option[14]="add/remove swap"
 	local option[15]="Install desktop apps"
-	local option[16]="quit"
+	local option[16]="Install nginx VPS"
+	local option[17]="quit"
 	#echo "${option[@]}"
 
 	echo "###################################"
@@ -95,6 +96,10 @@ m_main(){
 			m_install_desktop_apps
 			;;
 		16)
+			echo "Install nginx VPS"
+			m_install_nginx_vps
+			;;
+		17)
 			echo "return back"
 			return;
 			;;
