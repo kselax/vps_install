@@ -11,7 +11,8 @@ m_remove_ng_apps(){
 	local option[4]="remove ng phpMyAdmin"
 	local option[5]="remove ng varnish"
 	local option[6]="remove ng let's encrypt"
-	local option[7]="return back"
+	local option[7]="remove rabbitMQ"
+	local option[8]="return back"
 
 
 	local PS3="Select action: "
@@ -45,6 +46,10 @@ m_remove_ng_apps(){
 				remove_ng_lets_encrypt
 				;;
 			7)
+				echo "remove rabbitMQ"
+				remove_rabbitmq
+				;;
+			8)
 				return;
 				;;
 			*)

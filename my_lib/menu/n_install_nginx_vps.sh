@@ -13,7 +13,8 @@ m_install_nginx_vps(){
 	local option[6]="Install ng varnish"
 	local option[7]="Install ng lets encript"
 	local option[8]="Create Server Blocks"
-	local option[9]="return back"
+	local option[9]="Install RabbitMQ"
+	local option[10]="return back"
 
 	local PS3="Select action: "
 
@@ -53,6 +54,10 @@ m_install_nginx_vps(){
 				m_create_server_blocks
 				;;
 			9)
+				echo "Install RabbitMQ"
+				install_rabbitmq
+				;;
+			10)
 				echo "return back"
 				return
 				;;
