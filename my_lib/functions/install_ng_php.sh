@@ -3,7 +3,12 @@
 install_ng_php(){
   echo "function install_ng_php"
 
+  sudo apt-get -y update
   sudo apt-get -y install php-fpm php-mysql
+
+  # Install Additional PHP Extensions
+  sudo apt-get -y install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc
+
   # go to php.ini sudo vim /etc/php/7.0/fpm/php.ini
   # and uncommente the line (change meaning to 0)
   # cgi.fix_pathinfo=0
@@ -27,6 +32,23 @@ install_ng_php(){
   echo "<?php
 phpinfo();
 ?>" > /var/www/html/info.php
+
+  # change a user of nginx and php to a current user
+  # inf file sudo vim /etc/nginx/nginx.conf change user to neo
+  # user neo;
+  sudo sed -ri.bak 's/^user\s+.*?$/user '"$USER"';/' /etc/nginx/nginx.conf
+  # then restart nginx
+  sudo systemctl restart nginx
+  # in file sudo vim /etc/php/7.0/fpm/pool.d/www.conf change the variables to neo
+  # user = neo
+  sudo sed -ri.bak 's/^\s*user.*$/user = '"$USER"'/' /etc/php/7.0/fpm/pool.d/www.conf
+  # group = neo
+  sudo sed -ri.bak 's/^\s*group.*$/group = '"$USER"'/' /etc/php/7.0/fpm/pool.d/www.conf
+  # listen.owner = neo
+  sudo sed -ri.bak 's/^\s*listen.owner.*$/listen.owner = '"$USER"'/' /etc/php/7.0/fpm/pool.d/www.conf
+  # listen.group = neo
+  sudo sed -ri.bak 's/^\s*listen.group.*$/listen.group = '"$USER"'/' /etc/php/7.0/fpm/pool.d/www.conf
+
   # restart php7.0-fpm
   sudo systemctl restart php7.0-fpm
   # restart nginx
