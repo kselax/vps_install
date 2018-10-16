@@ -30,8 +30,8 @@ Input a sitename:"
   listen 443 ssl;
   listen [::]:443 ssl;
 =======
-  listen 443 ssl default_server;
-  listen [::]:443 ssl default_server;
+  listen 443 ssl;
+  listen [::]:443 ssl;
 >>>>>>> a15bd1e2a76339d3d6fb305e98437340a4bd732c
   include snippets/snakeoil.conf;
 
