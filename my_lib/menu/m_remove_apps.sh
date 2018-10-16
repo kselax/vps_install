@@ -13,12 +13,12 @@ m_remove_apps(){
 	local option[6]="remove let's encrypt"
 	local option[7]="return back"
 
-	
+
 	local PS3="3Select action: "
 
 	select var in "${option[@]}"
 	do
-		
+
 		case $REPLY in
 			1)
 				echo "remove Apache2"
@@ -55,5 +55,3 @@ m_remove_apps(){
 	done
 
 } #m_remove_apps
-
-
