@@ -43,6 +43,16 @@ install_rabbitmq(){
   sudo rabbitmq-plugins enable rabbitmq_management
   sudo chown -R rabbitmq:rabbitmq /var/lib/rabbitmq/
 
+<<<<<<< HEAD
   echo
   echo access http://localhost:15672, login and password are guest
+=======
+  # set up a password
+  sudo rabbitmqctl add_user adminmq adminmq
+  sudo rabbitmqctl set_user_tags adminmq administrator
+  sudo rabbitmqctl set_permissions -p / adminmq ".*" ".*" ".*"
+
+  echo
+  echo access http://localhost:15672, login and password are guest or http://`hostname -I`:15672, login and password are adminmq
+>>>>>>> a15bd1e2a76339d3d6fb305e98437340a4bd732c
 }
